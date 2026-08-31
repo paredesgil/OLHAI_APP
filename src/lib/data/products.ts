@@ -129,7 +129,7 @@ export async function getProductBySlug(
   const { data, error } = await supabase
     .from("products")
     .select(
-      "id, slug, public_code, title, description, price, condition, city:cities(name), product_images(url, sort_order), seller:profiles(display_name, avatar_url)"
+      "id, slug, public_code, title, description, price, condition, city:cities(name), product_images(url, sort_order), seller:profiles(display_name, avatar_url, is_verified)"
     )
     .eq("slug", slug)
     .eq("status", "active")
@@ -165,6 +165,7 @@ export async function getProductBySlug(
       avatarUrl: row.seller?.avatar_url ?? null,
       whatsapp: whatsapp ?? "",
       cityName: row.city?.name ?? "",
+      isVerified: row.seller?.is_verified ?? false,
     },
   };
 }

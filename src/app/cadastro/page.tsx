@@ -8,7 +8,7 @@ import { Logo } from "@/components/Logo";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfiguredClient } from "@/lib/supabase/config";
 import { useLookups } from "@/lib/data/client-lookup";
-import { isValidBrazilianPhone } from "@/lib/utils";
+import { isValidBrazilianPhone, formatBrazilianPhone } from "@/lib/utils";
 
 type Etapa1 = { nome: string; email: string; whatsapp: string; senha: string };
 type Etapa2 = { tipo: "particular" | "empresa"; cidadeId: string };
@@ -28,6 +28,7 @@ export default function CadastroPage() {
     cidadeId: "",
   });
   const [erro, setErro] = useState<string | null>(null);
+  const [aceitouTermos, setAceitouTermos] = useState(false);
   const [carregando, setCarregando] = useState(false);
 
   // Assim que as cidades reais carregam, seleciona a primeira por padrão
@@ -38,6 +39,11 @@ export default function CadastroPage() {
 
   async function finalizarCadastro() {
     setErro(null);
+
+    if (!aceitouTermos) {
+      setErro("Você precisa aceitar os Termos de Uso para continuar.");
+      return;
+    }
 
     if (!isSupabaseConfiguredClient()) {
       router.push("/conta");
@@ -150,9 +156,13 @@ export default function CadastroPage() {
           />
           <input
             required
+            inputMode="numeric"
             placeholder="WhatsApp (com DDD)"
             value={etapa1.whatsapp}
-            onChange={(e) => setEtapa1({ ...etapa1, whatsapp: e.target.value })}
+            onChange={(e) =>
+              setEtapa1({ ...etapa1, whatsapp: formatBrazilianPhone(e.target.value) })
+            }
+            maxLength={15}
             className="rounded-2xl border border-line bg-white px-4 py-3.5 text-[15px] outline-none ring-orange/30 focus:ring-2"
           />
           <input
@@ -208,11 +218,31 @@ export default function CadastroPage() {
             ))}
           </select>
 
+          <label className="mt-2 flex items-start gap-2 text-[12.5px] text-muted">
+            <input
+              type="checkbox"
+              checked={aceitouTermos}
+              onChange={(e) => setAceitouTermos(e.target.checked)}
+              className="mt-0.5 h-4 w-4 shrink-0 accent-orange"
+            />
+            <span>
+              Li e concordo com os{" "}
+              <Link href="/termos" className="font-semibold text-orange" target="_blank">
+                Termos de Uso
+              </Link>{" "}
+              e a{" "}
+              <Link href="/privacidade" className="font-semibold text-orange" target="_blank">
+                Política de Privacidade
+              </Link>{" "}
+              do OLHAÍ.
+            </span>
+          </label>
+
           {erro && <p className="text-[13px] text-red-600">{erro}</p>}
 
           <button
             type="button"
-            disabled={carregando}
+            disabled={carregando || !aceitouTermos}
             onClick={finalizarCadastro}
             className="mt-2 rounded-2xl bg-orange py-3.5 text-[15px] font-bold text-white shadow-md shadow-orange/25 transition active:scale-[0.98] disabled:opacity-60"
           >

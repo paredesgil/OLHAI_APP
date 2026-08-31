@@ -29,17 +29,17 @@ export function ProductGallery({
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="no-scrollbar flex aspect-square w-full snap-x snap-mandatory overflow-x-auto"
+        className="no-scrollbar flex aspect-square w-full snap-x snap-mandatory overflow-x-auto bg-line"
       >
         {images.map((url, i) => (
-          <div key={i} className="relative aspect-square w-full shrink-0 snap-center">
+          <div key={i} className="relative aspect-square w-full shrink-0 snap-center bg-line">
             <Image
               src={url}
               alt={`${alt} — foto ${i + 1}`}
               fill
               sizes="448px"
               priority={i === 0}
-              className="object-cover"
+              className="object-contain"
             />
           </div>
         ))}

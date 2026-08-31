@@ -103,8 +103,17 @@ export default function EntrarPage() {
         </Link>
       </div>
 
-      <p className="mb-6 text-center text-[12px] text-muted">
+      <p className="mb-2 text-center text-[12px] text-muted">
         Compradores não precisam criar conta para navegar e negociar.
+      </p>
+      <p className="mb-6 text-center text-[11px] text-muted">
+        <Link href="/termos" className="underline">
+          Termos de Uso
+        </Link>{" "}
+        ·{" "}
+        <Link href="/privacidade" className="underline">
+          Política de Privacidade
+        </Link>
       </p>
     </main>
   );

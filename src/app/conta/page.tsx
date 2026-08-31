@@ -10,7 +10,8 @@ import { ProductActions } from "@/components/ProductActions";
 const priceFormatter = new Intl.NumberFormat("pt-BR", {
   style: "currency",
   currency: "BRL",
-  maximumFractionDigits: 0,
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
 });
 
 const STATUS_LABEL: Record<string, string> = {
@@ -162,6 +163,16 @@ export default async function ContaPage() {
           </div>
         ))}
       </div>
+
+      <p className="mt-8 text-center text-[11px] text-muted">
+        <Link href="/termos" className="underline">
+          Termos de Uso
+        </Link>{" "}
+        ·{" "}
+        <Link href="/privacidade" className="underline">
+          Política de Privacidade
+        </Link>
+      </p>
     </main>
   );
 }

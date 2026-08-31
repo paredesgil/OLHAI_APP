@@ -43,6 +43,7 @@ export const MOCK_PRODUCTS: ProductDetail[] = [
       avatarUrl: null,
       whatsapp: "5567999990000",
       cityName: "Corumbá - MS",
+      isVerified: false,
     },
   },
   {
@@ -65,6 +66,7 @@ export const MOCK_PRODUCTS: ProductDetail[] = [
       avatarUrl: null,
       whatsapp: "5567999991111",
       cityName: "Corumbá - MS",
+      isVerified: false,
     },
   },
   {
@@ -86,6 +88,7 @@ export const MOCK_PRODUCTS: ProductDetail[] = [
       avatarUrl: null,
       whatsapp: "5567999992222",
       cityName: "Ladário - MS",
+      isVerified: false,
     },
   },
   {
@@ -107,6 +110,7 @@ export const MOCK_PRODUCTS: ProductDetail[] = [
       avatarUrl: null,
       whatsapp: "5567999993333",
       cityName: "Corumbá - MS",
+      isVerified: false,
     },
   },
 ];

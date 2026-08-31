@@ -8,7 +8,7 @@ import { ChevronLeft, Camera, X, LogIn } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfiguredClient } from "@/lib/supabase/config";
 import { useLookups } from "@/lib/data/client-lookup";
-import { buildProductSlug, generatePublicCode, isValidBrazilianPhone } from "@/lib/utils";
+import { buildProductSlug, generatePublicCode, isValidBrazilianPhone, formatBrazilianPhone } from "@/lib/utils";
 
 type Etapa = 1 | 2 | 3;
 
@@ -356,9 +356,11 @@ export default function VenderPage() {
 
           <input
             required
+            inputMode="numeric"
             placeholder="WhatsApp para contato"
             value={whatsapp}
-            onChange={(e) => setWhatsapp(e.target.value)}
+            onChange={(e) => setWhatsapp(formatBrazilianPhone(e.target.value))}
+            maxLength={15}
             className="rounded-2xl border border-line bg-white px-4 py-3.5 text-[15px] outline-none ring-orange/30 focus:ring-2"
           />
 

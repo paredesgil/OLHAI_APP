@@ -82,6 +82,7 @@ export interface ProductDetail extends ProductCard {
     avatarUrl: string | null;
     whatsapp: string;
     cityName: string;
+    isVerified: boolean;
   };
 }
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, BadgeCheck } from "lucide-react";
 import { WhatsappButton } from "@/components/WhatsappButton";
 import { ShareButton } from "@/components/ShareButton";
 import { ProductViewTracker } from "@/components/ProductViewTracker";
@@ -14,7 +14,8 @@ import { isFavorited } from "@/lib/data/favorites";
 const priceFormatter = new Intl.NumberFormat("pt-BR", {
   style: "currency",
   currency: "BRL",
-  maximumFractionDigits: 0,
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
 });
 
 export default async function ProdutoPage({
@@ -81,8 +82,16 @@ export default async function ProdutoPage({
               {product.seller.name.charAt(0)}
             </div>
             <div>
-              <p className="text-[14px] font-semibold text-ink">
+              <p className="flex items-center gap-1 text-[14px] font-semibold text-ink">
                 {product.seller.name}
+                {product.seller.isVerified && (
+                  <span
+                    title="Vendedor verificado"
+                    className="flex h-4 w-4 items-center justify-center rounded-full bg-blue-500 text-white"
+                  >
+                    <BadgeCheck className="h-3 w-3" strokeWidth={3} />
+                  </span>
+                )}
               </p>
               <p className="text-[12px] text-muted">{product.seller.cityName}</p>
             </div>
