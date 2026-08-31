@@ -1,0 +1,14 @@
+{
+  "name": "OLHAÍ — Negócio bom tá por perto.",
+  "short_name": "OLHAÍ",
+  "description": "Marketplace de proximidade: produtos novos e usados perto de você, contato direto no WhatsApp.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f4f6",
+  "theme_color": "#ff6a00",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
