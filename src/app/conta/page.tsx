@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Eye, MessageCircle, ChevronRight, Heart } from "lucide-react";
+import { Eye, MessageCircle, ChevronRight, Heart, LogIn } from "lucide-react";
 import { getCurrentUser, getSellerStats, getMyProducts } from "@/lib/data/seller";
 import { isSupabaseConfigured } from "@/lib/supabase/server";
 import { Logo } from "@/components/Logo";
@@ -35,16 +35,51 @@ function validadeLabel(expiresAt?: string | null, status?: string) {
 
 export default async function ContaPage() {
   const user = await getCurrentUser();
+  const semSupabase = !isSupabaseConfigured();
 
-  // Em modo demonstração (Supabase não configurado) ou sem usuário logado,
-  // mostramos o painel com dados de exemplo para visualização do fluxo.
+  // Com Supabase configurado (modo real) e ninguém logado, não mostramos
+  // o painel — antes isso caía num vendedor "demo" fictício e exibia
+  // números de exemplo como se fossem reais, sem deixar claro que eram
+  // fictícios. Modo demonstração (sem Supabase configurado) continua
+  // mostrando o painel normalmente, pra dar pra ver o app funcionando.
+  if (!semSupabase && !user) {
+    return (
+      <main className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 px-6 text-center">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-orange/10 text-orange">
+          <LogIn className="h-6 w-6" />
+        </span>
+        <div>
+          <p className="text-[16px] font-bold text-ink">
+            Entre na sua conta para ver seu painel
+          </p>
+          <p className="mt-1 text-[13px] text-muted">
+            Seus anúncios, visualizações e contatos ficam aqui depois de
+            entrar.
+          </p>
+        </div>
+        <div className="flex w-full flex-col gap-2">
+          <Link
+            href="/entrar"
+            className="rounded-2xl bg-orange py-3.5 text-[15px] font-bold text-white shadow-md shadow-orange/25"
+          >
+            Entrar
+          </Link>
+          <Link
+            href="/cadastro"
+            className="rounded-2xl border border-line py-3.5 text-[15px] font-semibold text-ink"
+          >
+            Criar conta
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
   const sellerId = user?.id ?? "demo";
   const [stats, produtos] = await Promise.all([
     getSellerStats(sellerId),
     getMyProducts(sellerId),
   ]);
-
-  const semSupabase = !isSupabaseConfigured();
 
   return (
     <main className="px-4 pt-5">
