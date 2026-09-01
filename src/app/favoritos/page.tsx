@@ -11,16 +11,16 @@ export default async function FavoritosPage() {
   const favoritos = user || semSupabase ? await getMyFavorites() : [];
 
   return (
-    <main className="px-4 pt-5 pb-8">
+    <main className="mx-auto max-w-md px-4 pt-5 pb-8 md:max-w-6xl md:px-8 md:pt-8">
       <header className="mb-5 flex items-center gap-3">
         <Link
           href="/"
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-white ring-1 ring-line"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-white ring-1 ring-line md:hidden"
           aria-label="Voltar"
         >
           <ChevronLeft className="h-5 w-5 text-navy" />
         </Link>
-        <h1 className="text-[18px] font-extrabold text-ink">Favoritos</h1>
+        <h1 className="text-[18px] font-extrabold text-ink md:text-[22px]">Favoritos</h1>
       </header>
 
       {!user && !semSupabase ? (
@@ -45,7 +45,7 @@ export default async function FavoritosPage() {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5 lg:grid-cols-5">
           {favoritos.map((p) => (
             <ProductCard key={p.id} product={{ ...p, isFavorite: true }} />
           ))}

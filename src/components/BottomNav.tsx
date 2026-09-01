@@ -23,7 +23,7 @@ export function BottomNav() {
   }
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 backdrop-blur-sm">
+    <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 backdrop-blur-sm md:hidden">
       <div className="mx-auto flex max-w-md items-center justify-around px-2 py-2">
         {ITEMS.map(({ href, label, icon: Icon, highlight }) => {
           const active = pathname === href;

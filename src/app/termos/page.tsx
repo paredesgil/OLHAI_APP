@@ -5,7 +5,7 @@ export const metadata = { title: "Termos de Uso — OLHAÍ" };
 
 export default function TermosPage() {
   return (
-    <main className="px-5 pb-12 pt-5">
+    <main className="mx-auto max-w-md px-5 pb-12 pt-5 md:max-w-3xl md:px-8 md:pt-10">
       <Link
         href="/"
         className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-white ring-1 ring-line"
@@ -109,7 +109,7 @@ export default function TermosPage() {
           <h2 className="mb-1.5 text-[15px] font-bold text-ink">7. Contato</h2>
           <p>
             Dúvidas sobre estes termos podem ser enviadas para{" "}
-            <span className="font-medium text-ink">contato@olhai.com.br</span>.
+            <span className="font-medium text-ink">contato@olhaiapp.com.br</span>.
           </p>
         </section>
       </div>

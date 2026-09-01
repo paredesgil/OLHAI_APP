@@ -5,7 +5,7 @@ export const metadata = { title: "Política de Privacidade — OLHAÍ" };
 
 export default function PrivacidadePage() {
   return (
-    <main className="px-5 pb-12 pt-5">
+    <main className="mx-auto max-w-md px-5 pb-12 pt-5 md:max-w-3xl md:px-8 md:pt-10">
       <Link
         href="/"
         className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-white ring-1 ring-line"
@@ -95,7 +95,7 @@ export default function PrivacidadePage() {
           </ul>
           <p className="mt-2">
             Para exercer qualquer um desses direitos, envie um e-mail para{" "}
-            <span className="font-medium text-ink">contato@olhai.com.br</span>.
+            <span className="font-medium text-ink">contato@olhaiapp.com.br</span>.
           </p>
         </section>
 
@@ -126,7 +126,7 @@ export default function PrivacidadePage() {
           <h2 className="mb-1.5 text-[15px] font-bold text-ink">8. Contato</h2>
           <p>
             Dúvidas sobre privacidade podem ser enviadas para{" "}
-            <span className="font-medium text-ink">contato@olhai.com.br</span>.
+            <span className="font-medium text-ink">contato@olhaiapp.com.br</span>.
           </p>
         </section>
       </div>

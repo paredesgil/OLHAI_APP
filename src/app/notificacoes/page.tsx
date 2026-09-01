@@ -7,7 +7,7 @@ export default async function NotificacoesPage() {
   const notifications = await getNotifications();
 
   return (
-    <main className="px-4 pt-5 pb-8">
+    <main className="mx-auto max-w-md px-4 pt-5 pb-8 md:max-w-2xl md:px-8 md:pt-8">
       <header className="mb-5 flex items-center gap-3">
         <Link
           href="/"

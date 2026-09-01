@@ -36,7 +36,8 @@ export default function EsqueciSenhaPage() {
   }
 
   return (
-    <main className="flex min-h-[100dvh] flex-col px-6 pt-6">
+    <main className="flex min-h-[100dvh] flex-col px-6 pt-6 md:items-center md:justify-center md:bg-bg md:px-4 md:py-10">
+      <div className="md:w-[420px] md:rounded-3xl md:border md:border-line md:bg-white md:p-10 md:shadow-sm">
       <Link
         href="/entrar"
         className="mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-white ring-1 ring-line"
@@ -89,6 +90,7 @@ export default function EsqueciSenhaPage() {
           </form>
         </>
       )}
+      </div>
     </main>
   );
 }

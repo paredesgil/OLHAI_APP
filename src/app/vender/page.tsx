@@ -159,7 +159,8 @@ export default function VenderPage() {
 
   if (precisaLogin) {
     return (
-      <main className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 px-6 text-center">
+      <main className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 px-6 text-center md:bg-bg">
+        <div className="flex flex-col items-center gap-4 md:w-[420px] md:rounded-3xl md:border md:border-line md:bg-white md:p-10 md:shadow-sm">
         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-orange/10 text-orange">
           <LogIn className="h-6 w-6" />
         </span>
@@ -185,12 +186,13 @@ export default function VenderPage() {
             Criar conta
           </Link>
         </div>
+        </div>
       </main>
     );
   }
 
   return (
-    <main className="flex min-h-[100dvh] flex-col px-4 pt-5 pb-8">
+    <main className="mx-auto flex min-h-[100dvh] max-w-md flex-col px-4 pt-5 pb-8 md:max-w-lg md:px-8 md:pt-10">
       <header className="mb-6 flex items-center gap-3">
         <button
           onClick={() => (etapa === 1 ? router.back() : setEtapa((e) => (e - 1) as Etapa))}

@@ -59,7 +59,7 @@ export function EditarAnuncioForm({ product }: { product: ProductEdit }) {
   }
 
   return (
-    <main className="flex min-h-[100dvh] flex-col px-4 pt-5 pb-8">
+    <main className="mx-auto flex min-h-[100dvh] max-w-md flex-col px-4 pt-5 pb-8 md:max-w-lg md:px-8 md:pt-10">
       <header className="mb-6 flex items-center gap-3">
         <button
           onClick={() => router.back()}

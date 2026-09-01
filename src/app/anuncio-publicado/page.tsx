@@ -9,11 +9,12 @@ export default async function AnuncioPublicadoPage({
 }) {
   const { titulo, slug, id } = await searchParams;
   const productUrl = slug
-    ? `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://olhai.com.br"}/produto/${slug}`
+    ? `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://olhaiapp.com.br"}/produto/${slug}`
     : "";
 
   return (
-    <main className="flex min-h-[100dvh] flex-col items-center justify-center px-6 text-center">
+    <main className="flex min-h-[100dvh] flex-col items-center justify-center px-6 text-center md:bg-bg">
+      <div className="flex w-full flex-col items-center md:w-[420px] md:rounded-3xl md:border md:border-line md:bg-white md:p-10 md:shadow-sm">
       <span className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-whatsapp/10">
         <CheckCircle2 className="h-9 w-9 text-whatsapp" strokeWidth={1.75} />
       </span>
@@ -50,6 +51,7 @@ export default async function AnuncioPublicadoPage({
         >
           Meus anúncios
         </Link>
+      </div>
       </div>
     </main>
   );

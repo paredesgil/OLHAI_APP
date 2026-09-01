@@ -42,10 +42,10 @@ export default async function BuscaPage({
   }));
 
   return (
-    <main className="px-4 pt-5">
+    <main className="mx-auto max-w-md px-4 pt-5 md:max-w-6xl md:px-8 md:pt-8">
       <SearchEventTracker term={q ?? ""} hasResults={products.length > 0} />
 
-      <header className="mb-4 flex items-center gap-3">
+      <header className="mb-4 flex items-center gap-3 md:hidden">
         <Link
           href="/"
           className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-line"
@@ -57,6 +57,10 @@ export default async function BuscaPage({
           <SearchBar defaultValue={q} />
         </div>
       </header>
+
+      <h1 className="mb-4 hidden text-[22px] font-extrabold text-ink md:block">
+        {q ? `Resultados para "${q}"` : "Todos os anúncios"}
+      </h1>
 
       <div className="mb-3 flex items-center justify-between text-[13px] text-muted">
         <span>
@@ -80,7 +84,7 @@ export default async function BuscaPage({
           </p>
         </div>
       ) : (
-        <div className="mt-4 grid grid-cols-2 gap-3">
+        <div className="mt-4 grid grid-cols-2 gap-3 pb-10 md:grid-cols-4 md:gap-5 md:pb-16 lg:grid-cols-5">
           {products.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

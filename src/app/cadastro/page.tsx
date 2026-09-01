@@ -106,7 +106,8 @@ export default function CadastroPage() {
   }
 
   return (
-    <main className="flex min-h-[100dvh] flex-col px-6 pt-6">
+    <main className="flex min-h-[100dvh] flex-col px-6 pt-6 md:items-center md:justify-center md:bg-bg md:px-4 md:py-10">
+      <div className="md:w-[440px] md:rounded-3xl md:border md:border-line md:bg-white md:p-10 md:shadow-sm">
       <button
         onClick={() => (passo === 1 ? router.push("/entrar") : setPasso(1))}
         className="mb-6 flex h-10 w-10 items-center justify-center rounded-full bg-white ring-1 ring-line"
@@ -256,6 +257,7 @@ export default function CadastroPage() {
         <Link href="/entrar" className="font-semibold text-orange">
           Entrar
         </Link>
+      </div>
       </div>
     </main>
   );

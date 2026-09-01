@@ -44,7 +44,8 @@ export default async function ContaPage() {
   // mostrando o painel normalmente, pra dar pra ver o app funcionando.
   if (!semSupabase && !user) {
     return (
-      <main className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 px-6 text-center">
+      <main className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 px-6 text-center md:bg-bg">
+        <div className="md:w-[420px] md:rounded-3xl md:border md:border-line md:bg-white md:p-10 md:shadow-sm flex flex-col items-center gap-4">
         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-orange/10 text-orange">
           <LogIn className="h-6 w-6" />
         </span>
@@ -71,6 +72,7 @@ export default async function ContaPage() {
             Criar conta
           </Link>
         </div>
+        </div>
       </main>
     );
   }
@@ -82,7 +84,7 @@ export default async function ContaPage() {
   ]);
 
   return (
-    <main className="px-4 pt-5">
+    <main className="mx-auto max-w-md px-4 pt-5 md:max-w-3xl md:px-8 md:pt-8">
       <header className="mb-5 flex items-center justify-between">
         <div>
           <Logo compact className="h-6 w-auto" />
@@ -116,7 +118,7 @@ export default async function ContaPage() {
         </div>
       )}
 
-      <section className="mb-6 grid grid-cols-2 gap-3">
+      <section className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
         <StatCard label="Anúncios ativos" value={stats.activeCount} />
         <StatCard label="Vendidos" value={stats.soldCount} />
         <StatCard label="Visualizações" value={stats.viewsCount} />

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { BottomNav } from "@/components/BottomNav";
+import { TopNav } from "@/components/TopNav";
+import { Footer } from "@/components/Footer";
 
 // Poppins ExtraBold para títulos/logo, Medium como apoio — conforme o
 // kit de marca OLHAÍ (paleta laranja #FF6A00 + navy #0D1B2A).
@@ -51,12 +53,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${poppins.variable} ${inter.variable} antialiased`}>
-        <div className="mx-auto min-h-screen max-w-md bg-bg pb-20">
-          {children}
+        <div className="flex min-h-screen flex-col bg-bg">
+          <TopNav />
+          <div className="flex-1 pb-20 md:pb-0">{children}</div>
+          <Footer />
         </div>
-        <div className="mx-auto max-w-md">
-          <BottomNav />
-        </div>
+        <BottomNav />
       </body>
     </html>
   );

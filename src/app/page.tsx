@@ -27,8 +27,10 @@ export default async function HomePage() {
   }));
 
   return (
-    <main className="px-4 pt-5">
-      <header className="mb-4 flex items-center justify-between">
+    <main className="mx-auto max-w-md px-4 pt-5 md:max-w-6xl md:px-8 md:pt-8">
+      {/* Cabeçalho compacto — só no celular; no desktop o TopNav já cobre
+          busca/notificações/conta. */}
+      <header className="mb-4 flex items-center justify-between md:hidden">
         <div>
           <Logo compact className="h-6 w-auto" />
           <div className="mt-0.5">
@@ -49,16 +51,22 @@ export default async function HomePage() {
         </Link>
       </header>
 
-      <div className="mb-5">
+      <div className="mb-5 md:hidden">
         <SearchBar />
       </div>
 
-      <section className="mb-6">
+      {/* No desktop, a cidade continua visível e filtrável mesmo com o
+          cabeçalho mobile escondido. */}
+      <div className="mb-5 hidden md:block">
+        <CitySelector />
+      </div>
+
+      <section className="mb-6 md:mb-8">
         <CategoryRow categories={categories} />
       </section>
 
-      <section className="mb-6">
-        <h2 className="mb-3 text-[16px] font-extrabold text-ink">
+      <section className="mb-6 md:mb-10">
+        <h2 className="mb-3 text-[16px] font-extrabold text-ink md:mb-4 md:text-[20px]">
           OLHAÍ OS DESTAQUES 👀
         </h2>
         {products.length === 0 ? (
@@ -66,7 +74,7 @@ export default async function HomePage() {
             Ainda não há anúncios nessa cidade.
           </p>
         ) : (
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5 lg:grid-cols-5">
             {products.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
@@ -75,11 +83,11 @@ export default async function HomePage() {
       </section>
 
       {products.length > 0 && (
-        <section>
-          <h2 className="mb-3 text-[16px] font-extrabold text-ink">
+        <section className="pb-10 md:pb-16">
+          <h2 className="mb-3 text-[16px] font-extrabold text-ink md:mb-4 md:text-[20px]">
             Chegou agora
           </h2>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5 lg:grid-cols-5">
             {[...products].reverse().map((p) => (
               <ProductCard key={`recent-${p.id}`} product={p} />
             ))}

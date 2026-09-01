@@ -45,7 +45,8 @@ export default function RedefinirSenhaPage() {
   }
 
   return (
-    <main className="flex min-h-[100dvh] flex-col px-6 pt-10">
+    <main className="flex min-h-[100dvh] flex-col px-6 pt-10 md:items-center md:justify-center md:bg-bg md:px-4 md:py-10">
+      <div className="md:w-[420px] md:rounded-3xl md:border md:border-line md:bg-white md:p-10 md:shadow-sm">
       <div className="mb-10 flex flex-col items-center">
         <Logo className="h-8 w-auto" />
       </div>
@@ -88,6 +89,7 @@ export default function RedefinirSenhaPage() {
           </button>
         </form>
       )}
+      </div>
     </main>
   );
 }
