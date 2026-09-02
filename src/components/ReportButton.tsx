@@ -5,7 +5,9 @@ import { Flag, X } from "lucide-react";
 import { reportProduct } from "@/lib/data/events";
 
 const MOTIVOS = [
-  "Produto suspeito ou golpe",
+  "Produto não pertence a quem anunciou / suspeita de furto",
+  "Golpe (pede pagamento antecipado, dados bancários, etc.)",
+  "Produto suspeito ou falsificado",
   "Anúncio duplicado",
   "Preço ou descrição enganosa",
   "Conteúdo proibido",
